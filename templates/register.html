@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylforlog.css') }}">
+
+</head>
+<body>
+    <div class="login-box">
+        <h2>Register</h2>
+
+        <form>
+
+          <div class="user-box">
+            <input type="email" name="email" required="">
+            <label>Email</label>
+          </div>
+
+          <div class="user-box">
+            <input type="text" name="fullname" required="">
+            <label>FullName</label>
+          </div>
+          
+          <div class="user-box">
+            <input type="text" name="adharno" required="">
+            <label>AdharNo</label>
+          </div>
+          
+          <div class="user-box">
+            <input type="text" name="mobileno" required="">
+            <label>Mobile-No</label>
+          </div>
+
+          <div class="user-box">
+            <input type="password" name="password" required="">
+            <label>new-password</label>
+          </div>
+
+          <a href="/templates/login.html">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </a>
+
+        </form>
+
+      </div>
+</body>
+</html>
