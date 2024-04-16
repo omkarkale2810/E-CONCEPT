@@ -23,22 +23,35 @@
             </div>
         </header>
         <h1>Available Bikes for Rent at {{ station.stationname }}</h1>
+
+        <form id="duration-form" onsubmit="submitDuration(event)">
+            <label for="duration">Enter Duration (in hours):</label>
+            <input type="text" name="duration" id="duration" placeholder="Enter duration in hours" required>
+            <button type="submit">APPLY</button>
+        </form>
+
+
         <div class="bike-container">
             {% for bike in bikes %}
             <div class="bike-card">
-            
-                <img id="bike-image-{{ loop.index }}" src="{{ url_for('static', filename='bike_photos/' + station.stationname + '/bike_' + loop.index|string + '.jpg') }}"
-    alt="{{ bike.name }} Image">
+
+                <img id="bike-image-{{ loop.index }}"
+                    src="{{ url_for('static', filename='bike_photos/' + station.stationname + '/bike_' + loop.index|string + '.jpg') }}"
+                    alt="{{ bike.name }} Image">
                 <div class="bike-details">
                     <h2>{{ bike.name }}</h2>
                     <p>Price: {{ bike.price }} rs</p>
                     <p>Available bikes: {{ bike.numberofbikes }}</p>
-                    <form action="/bikes" method="post">
+                    <form action="/bikes" method="post" id="rent-form">
                         <input type="hidden" name="amountofrent" value="{{ bike.price }}">
                         <input type="hidden" name="stationid" value="{{ bike.station_id }}">
                         <input type="hidden" name="bikeid" value="{{ bike.id }}">
-                        <button type="submit" id="rent-btn">Rent</button>
+                        <input type="hidden" name="duration" id="duration-input" value="">
+                        <button type="button" id ="rent-btn" onclick="submitRentForm({{ bike.id }})">Rent</button>
                     </form>
+                    
+
+
                 </div>
             </div>
             {% endfor %}
@@ -47,15 +60,48 @@
     </div>
 
     <script>
-        
+
         let bikeImages = [];
 
         for (let i = 0; i < {{ total_num_images }}; i++) {
             let imgElement = document.getElementById(`bike-image-${i + 1}`);
             bikeImages.push(imgElement.src);
         }
+
+        function submitDuration(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            var duration = document.getElementById('duration').value;
+
+            // Send an AJAX request to the backend
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/bikes', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle the response from the backend if needed
+                    console.log('Duration submitted successfully');
+                }
+            };
+            xhr.send(JSON.stringify({ duration: duration }));
+        }
+
+        function submitRentForm(bikeId) {
+    var duration = document.getElementById('duration').value;
+
+    // Set the duration value in the hidden input field
+    document.getElementById('duration-input').value = duration;
+
+    // Submit the form
+    var form = document.getElementById('rent-form');
+    form.submit();
+}
+
+
+
+
     </script>
-    
+
 
 </body>
 

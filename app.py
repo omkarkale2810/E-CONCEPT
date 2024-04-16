@@ -10,6 +10,7 @@ from flask import request
 import uuid
 import random
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
@@ -310,16 +311,19 @@ def withdraw_funds():
             return render_template('userwallet.html', error='Insufficient Balance')
     else:
         return redirect('login.html')
-
 @app.route('/bikes', methods=['GET', 'POST'])
 def manage_bikes():
     if request.method == 'POST':
         if 'email' in session:
             user = User.query.filter_by(email=session['email']).first()
-            rent_amount = int(request.form['amountofrent'])
             station_id = int(request.form['stationid'])
+            rent_amount = int(request.form['amountofrent'])
             bike_id = int(request.form['bikeid'])  
+            duration = int(request.form['duration'])
             bike = Bikes.query.get(bike_id)
+
+            # Calculate the rent amount based on duration
+            rent_amount = duration*rent_amount
 
             if user.accountbalance >= rent_amount and bike.numberofbikes > 0:
                 user.accountbalance -= rent_amount
@@ -357,6 +361,7 @@ def manage_bikes():
         else:
             return redirect('login.html')
     else:
+        station_id = request.args.get('stationid')
         station = Station.query.get(station_id)
         bikes_in_station = Bikes.query.filter_by(station_id=station_id).all()
 
@@ -371,8 +376,6 @@ def manage_bikes():
 
         
         return render_template('bikes.html', station=station, bikes=bikes_in_station, total_num_images=total_num_images, bikes_photos_dir=bikes_photos_dir)
-
-
 
 
 

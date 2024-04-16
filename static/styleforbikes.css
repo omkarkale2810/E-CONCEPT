@@ -178,3 +178,33 @@ h1 {
   background-color: #5df3d7;
   color: white;
 }
+/* CSS for the duration input form */
+#duration-form {
+  margin-top: 50px;
+  text-align: center; /* Center the form */
+}
+
+#duration-form label {
+  font-weight: bold;
+}
+
+#duration-form input[type="text"] {
+  padding: 12px; /* Larger padding */
+  margin: 10px; /* Added margin */
+  width: 200px; /* Larger width */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#duration-form button {
+  padding: 12px 24px; /* Larger padding */
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#duration-form button:hover {
+  background-color: #45a049;
+}

@@ -14,9 +14,10 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="/adminregister">Add New Admin</a></li>
+            <li><a href="/adminlogout">LOGOUT</a></li>
         </ul>
     </nav>
-    <h1>Welcome, {{ admin.name }}!</h1>
+    <h1>Welcome, {{ admin.email }}</h1>
 
     <h2>Rental Requests:</h2>
     <table border="1">
@@ -54,13 +55,15 @@
                         <label for="star1_{{ request.id }}">1 star</label>
                     </div>
                     
-                
+                <td>
                     <input type="submit" value="Approve">
                 </form>
+                </td>
+                <td>
                 
-                <form action="/decline_rental" method="POST">
-                    <input type="hidden" name="request_id" value="{{ request.id }}">
-                    <input type="submit" value="Decline">
+                <form action="/decline_rental" method="POST" >
+                    <input type="hidden" name="request_id" value="{{ request.id }}" >
+                    <input type="submit" value="Decline" style="background-color: red;">
                 </form>
             </td>
         </tr>
@@ -68,7 +71,6 @@
         {% endfor %}
     </table>
 
-    <a href="/adminlogout" class="logout-btn" style="margin-top: 400px;">LOGOUT</a>
 </body>
 
 </html>
