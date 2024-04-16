@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='stylfordash.css')}}">
+    <!-- Include Leaflet CSS -->
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="#">HOME</a>
+            <a href="/userwallet">WALLET</a>
+            <a href="/aboutus">ABOUT US</a>
+        </div>
+    </nav>
+
+
+    <div class="mapdiv">
+        <div id="map"></div>
+    </div>
+
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+   
+    <script>
+        var map = L.map('map').setView([18.5286, 73.8519], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var stations = {{ stations | tojson }};
+
+        for (var i = 0; i < stations.length; i++) {
+            var station = stations[i];
+            var popupContent = `
+            <div>
+                <b>${station.name}</b><br>
+            
+                Bikes available: ${station.details}<br>
+                <button onclick="rentBike(${station.id})">Rent a Bike</button>
+            </div>
+`              ;
+
+            var marker = L.marker([station.lat, station.lon]).addTo(map);
+            marker.bindPopup(popupContent);
+        }
+
+        function rentBike(stationId) {
+            console.log('Station ID:', stationId);
+            window.location.href = `/dashboard/station/${stationId}`;
+        }
+
+
+    </script>
+
+    <a href="/logout" class="logout-btn">LOGOUT</a>
+
+</body>
+
+</html>

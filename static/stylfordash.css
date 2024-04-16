@@ -1,0 +1,103 @@
+body,
+h1,
+h4,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  background: rgb(37, 247, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(37, 247, 255, 1) 0%,
+    rgba(114, 227, 155, 1) 47%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 10px 20px;
+  height: 50px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: rgb(0, 0, 0); /* Change the text color as needed */
+  margin: 0 15px;
+}
+
+.navbar a:hover {
+  color: #000000;
+  font-size: 20px;
+  text-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+#map {
+  margin-top: 3%;
+  height: 400px;
+  width: 90%;
+  left: 5%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+}
+
+.logout-btn {
+  display: block;
+  width: 65px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #333; 
+  color: white; 
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px;
+}
+
+.logout-btn:hover {
+  background-color: #b43c3c;
+  box-shadow: 0 0 10px;
+}
+
+#photo {
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+}
+
+/* Custom CSS for Leaflet Popup */
+.leaflet-popup-content-wrapper {
+  background: linear-gradient(to bottom, #b3f3ed, #ffffff);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Button Style */
+.leaflet-popup-content-wrapper button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.leaflet-popup-content-wrapper button:hover {
+  background-color: #0056b3;
+}

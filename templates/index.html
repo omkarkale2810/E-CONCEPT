@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styleforindex.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
+    <title>Home</title>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">E-CONCEPT</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/adminlogin">AdminLogin</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="x-mark">
+        <div class="container">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <div class="intro-container">
+        <h3 class="fancy-text">OMKAR & ADITYA'S MINI PROJECT</h3>
+        <h1>E-CONCEPT <br>AN E-VEHICLE RENTAL SYSTEM </h1>
+
+        <div class="button shift-camera-button">
+            <div class="border">
+                <div class="left-plane"></div>
+                <div class="right-plane"></div>
+            </div>
+            <div class="text">LETS BEGIN JOURNEY</div>
+        </div>
+    </div>
+    <div class="sky-container" >
+        <p class="para">Experience unparalleled flexibility and freedom in your travels through our e-vehicle rental platform. Our website empowers you with the freedom to choose when and where you want to explore, all while enjoying the environmental benefits of electric mobility. With a diverse fleet and flexible rental options, you have the power to customize your journey. Enjoy the convenience of electric transport without any constraints – discover the joy of exploration on your terms with our hassle-free e-vehicle rentals.</p>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r78/three.min.js"></script>
+    <script src="{{url_for('static',filename='jsforindex.js')}}"></script>
+</body>
+
+</html>

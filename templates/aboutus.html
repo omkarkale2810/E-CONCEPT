@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{url_for('static' , filename='styleforaboutus.css')}}">
+</head>
+
+<body>
+  <section>
+    <span>meet our</span>
+    <h2>Team</h2>
+    <p>Driving innovation with every click, empowering eco-friendly adventures.</p>
+    <span class="bg-watermark">team</span>
+    <div class="cards">
+      <div class="card">
+        <img src="https://media.licdn.com/dms/image/D4D03AQEh0MyKAdJblA/profile-displayphoto-shrink_800_800/0/1705520122775?e=1718841600&v=beta&t=vUdpxbPg9lfCwq8ezfR-FQkToIW6E6mDR0pa1EolBy0" alt="Omkar Kale">
+        <div class="card-content">
+          <h3>Omkar Kale</h3>
+          <p>Mis:612203082</p>
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="card" >
+        <img src="https://media.licdn.com/dms/image/D4D03AQHoE5H9qS1yaw/profile-displayphoto-shrink_400_400/0/1709633488139?e=1718841600&v=beta&t=ILsDV1fiTBT7_Oc1mDd3kMYZzwNBF2SBG0tuB95ZyJM" alt="Aditya Jadhav" >
+        <div class="card-content">
+          <h3>Aditya Jadhav</h3>
+          <p>Mis:612203072</p>
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+
+    const okbuttons = document.querySelectorAll(".card-buttons button");
+    const sections = document.querySelectorAll(".card-section");
+    const card = document.querySelector(".card");
+
+    const handleButtonClick = e => {
+      const targetSection = e.target.getAttribute("data-section");
+      const section = document.querySelector(targetSection);
+      targetSection !== "#about" ?
+        card.classList.add("is-active") :
+        card.classList.remove("is-active");
+      card.setAttribute("data-state", targetSection);
+      sections.forEach(s => s.classList.remove("is-active"));
+      okbuttons.forEach(b => b.classList.remove("is-active"));
+      e.target.classList.add("is-active");
+      section.classList.add("is-active");
+    };
+
+    okbuttons.forEach(btn => {
+      btn.addEventListener("click", handleButtonClick);
+    });
+
+
+  </script>
+
+</body>
+
+</html>
+
+
+
+

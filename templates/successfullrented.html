@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleforsuccess.css') }}">
+    <title>Successful Rental</title>
+</head>
+
+<body>
+    
+    <div id="wrapper">
+        <header>
+            <div class="navbar">
+                <div class="logo">
+                    <h1><a href="/logout">E-CONCEPT</a></h1>
+                </div>
+                <nav>
+                    <a href="/userwallet">WALLET</a>
+                    <a href="/aboutus">ABOUT US</a>
+                    <a href="/logout" class="logout-btn">LOGOUT</a>
+                </nav>
+            </div>
+        </header>
+        <div class="success-message">
+            <h2>Bike Rented Successfully!</h2>
+            <p>Your Password To Unlock Bike Is:</p>
+            <h1>{{ otp }}</h1>
+        </div>
+        
+    </div>
+    <script>
+        window.onload = function() {
+            alert("Funds withdrawn successfully. Bike rented.");
+        };
+    </script>
+</body>
+
+</html>

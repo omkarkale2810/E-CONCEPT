@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename="styleforchoose.css")}}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="card tryhackme">
+            <div class="content">
+                <a href="/dashboard">
+                    <h2 class="tryhackme-heading">RENT BIKE</h2>
+                </a>
+                <h3>Follow the steps</h3>
+                <p>1.Select Your Nearby Station <br>2.Check Availability And Price <br>3.Add Money In Your Wallet <br>4.Select Bike And Rent <br>5.Enter The Password On Bike</p>
+            </div>
+        </div>
+    
+        <div class="card hackbox">
+            <div class="content">
+                <a href="/rentoutdashboard">
+                    <h2 class="tryhackme-heading" style="color: aquamarine;">RENT OUT BIKE</h2>
+                </a>
+                <h3>Follow the steps</h3>
+                <p>1.Add Your E-Vehicle Detail <br>2.Add Your Bike Photo <br>3.We Decide Best Price And Let You Know <br>4.Your Bike Is Available At Station</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script>VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 25,
+        speed: 400,
+        easing: "cubic-bezier(.02,.77,.43,.87)",
+        perspective: 730,
+        transition: true,
+        gyroscope: true
+      });
+      </script>
+</body>
+
+</html>

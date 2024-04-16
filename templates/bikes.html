@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleforbikes.css') }}">
+    <title>Available Bikes</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="navbar">
+                <div class="logo">
+                    <h1><a href="/dashboard">E-CONCEPT</a></h1>
+                </div>
+                <nav>
+                    <a href="/dashboard">DASHBOARD</a>
+                    <a href="/userwallet">WALLET</a>
+                    <a href="/aboutus">ABOUT US</a>
+                </nav>
+            </div>
+        </header>
+        <h1>Available Bikes for Rent at {{ station.stationname }}</h1>
+        <div class="bike-container">
+            {% for bike in bikes %}
+            <div class="bike-card">
+            
+                <img id="bike-image-{{ loop.index }}" src="{{ url_for('static', filename='bike_photos/' + station.stationname + '/bike_' + loop.index|string + '.jpg') }}"
+    alt="{{ bike.name }} Image">
+                <div class="bike-details">
+                    <h2>{{ bike.name }}</h2>
+                    <p>Price: {{ bike.price }} rs</p>
+                    <p>Available bikes: {{ bike.numberofbikes }}</p>
+                    <form action="/bikes" method="post">
+                        <input type="hidden" name="amountofrent" value="{{ bike.price }}">
+                        <input type="hidden" name="stationid" value="{{ bike.station_id }}">
+                        <input type="hidden" name="bikeid" value="{{ bike.id }}">
+                        <button type="submit" id="rent-btn">Rent</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/logout" class="logout-btn">LOGOUT</a>
+    </div>
+
+    <script>
+        
+        let bikeImages = [];
+
+        for (let i = 0; i < {{ total_num_images }}; i++) {
+            let imgElement = document.getElementById(`bike-image-${i + 1}`);
+            bikeImages.push(imgElement.src);
+        }
+    </script>
+    
+
+</body>
+
+</html>

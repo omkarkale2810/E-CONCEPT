@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='admindash.css')}}">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">E-CONCEPT</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="/adminregister">Add New Admin</a></li>
+        </ul>
+    </nav>
+    <h1>Welcome, {{ admin.name }}!</h1>
+
+    <h2>Rental Requests:</h2>
+    <table border="1">
+        {% for request in rental_reqs %}
+        <tr>
+            <td>{{ request.user_id }}</td>
+            <td>{{ request.vehicle_name }}</td>
+            <td>{{ request.vehicle_number }}</td>
+            <td>
+                {% if request.station %}
+                    {{ request.station.stationname }}
+                {% else %}
+                    No Station
+                {% endif %}
+            </td>
+            <td>{{ request.duration }} days</td>
+            <td><img src="{{ request.bike_photo_path }}" id="photo" alt="Bike Photo"></td>
+
+
+            <td>
+                <form action="/approve_rental" method="POST">
+                    <input type="hidden" name="request_id" value="{{ request.id }}">
+                    
+                    
+                    <div class="rating">
+                        <input type="radio" id="star5_{{ request.id }}" name="rating" value="5">
+                        <label for="star5_{{ request.id }}">5 stars</label>
+                        <input type="radio" id="star4_{{ request.id }}" name="rating" value="4">
+                        <label for="star4_{{ request.id }}">4 stars</label>
+                        <input type="radio" id="star3_{{ request.id }}" name="rating" value="3">
+                        <label for="star3_{{ request.id }}">3 stars</label>
+                        <input type="radio" id="star2_{{ request.id }}" name="rating" value="2">
+                        <label for="star2_{{ request.id }}">2 stars</label>
+                        <input type="radio" id="star1_{{ request.id }}" name="rating" value="1">
+                        <label for="star1_{{ request.id }}">1 star</label>
+                    </div>
+                    
+                
+                    <input type="submit" value="Approve">
+                </form>
+                
+                <form action="/decline_rental" method="POST">
+                    <input type="hidden" name="request_id" value="{{ request.id }}">
+                    <input type="submit" value="Decline">
+                </form>
+            </td>
+        </tr>
+        
+        {% endfor %}
+    </table>
+
+    <a href="/adminlogout" class="logout-btn" style="margin-top: 400px;">LOGOUT</a>
+</body>
+
+</html>

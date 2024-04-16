@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='rentoutdash.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="#">HOME</a>
+            <a href="/userwallet">WALLET</a>
+            <a href="/aboutus">ABOUT US</a>
+            <a href="/logout" >LOGOUT</a>
+        </div>
+    </nav>
+
+    <form action="/rentout_bike" method="POST" enctype="multipart/form-data">
+        <label for="vehicle_name">Vehicle Name:</label>
+        <input type="text" id="vehicle_name" name="vehicle_name" required><br><br>
+        
+        <label for="vehicle_number">Vehicle Number:</label>
+        <input type="text" id="vehicle_number" name="vehicle_number" required><br><br>
+        
+        <label for="station_id">Nearby Station:</label>
+        <select id="station_id" name="station_id" required>
+            {% for station in stations %}
+                <option value="{{ station.id }}">{{ station.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <label for="duration">Duration to Rent (in days):</label>
+        <input type="number" id="duration" name="duration" min="1" required><br><br>
+        
+        <label for="bike_photo">Bike Photo:</label>
+        <input type="file" id="bike_photo" name="bike_photo" accept="image/*" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    
+
+</body>
+
+</html>

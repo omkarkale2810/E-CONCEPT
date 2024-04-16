@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;600;700&family=Roboto+Mono:wght@100;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #767676;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #1c2538;
+}
+.wrapper .card {
+  position: relative;
+  width: 300px;
+  height: 418px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  transform: perspective(400px);
+  background-color: #f5f6f7;
+}
+.card.hackbox {
+  background-color: #141d2b;
+}
+.hb-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hackbox-heading {
+  color: #9fef00;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+}
+.hackbox-span {
+  font-family: "Raleway", sans-serif;
+  font-family: 100;
+  color: #9fef00;
+  font-size: 2.5em;
+}
+.hackbox-heading:hover {
+  color: #ffe700;
+}
+.hackbox p {
+  color: #a4b1cd;
+}
+.hb {
+  color: #9fef00;
+}
+.hb:hover {
+  color: #fff;
+}
+
+.card.tryhackme {
+  background-color: #161e2d;
+}
+.tryhackme-heading {
+  color: #a6170e;
+  font-family: "Ubuntu Mono", monospace;
+}
+
+.tryhackme-heading:hover {
+  color: #fff;
+}
+
+.tryhackme p {
+  color: #8e929c;
+  font-family: "Ubuntu", sans-serif;
+}
+.tryhackme p:hover {
+  color: #fff;
+}
+.tr:hover {
+  color: #88cc14;
+}
+.tr {
+  color: #a6170e;
+}
+
+h2 {
+  color: #0a0a23;
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: "Roboto-mono", sans-serif;
+}
+h3 {
+  color: #6d6d84;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Roboto-mono", sans-serif;
+}
+p {
+  color: #0a0a23;
+  margin: 20px 20px;
+  font-family: "Roboto-mono", sans-serif;
+  padding: 10px 20px;
+}
+ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 30px;
+}
+
+li {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+i {
+  color: #0a0a23;
+  font-size: 2em;
+  transition: all 0.3s ease;
+}
+i:hover {
+  transform: translate3d(0, -12px, 22px);
+  color: #616171;
+}
+.material-icons-outlined {
+  color: #767676;
+}
+
+h2 {
+  transition: all 0.4s ease;
+}
+h2:hover {
+  transform: translate3d(0, -10px, 20px);
+  color: #616171;
+}
+h5 {
+  font-family: "Jost", sans-serif;
+}
+footer {
+  flex-wrap: wrap;
+}
+a {
+  text-decoration: none;
+}
